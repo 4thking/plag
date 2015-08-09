@@ -1,15 +1,18 @@
 class SectionsController < ApplicationController
   before_action :set_section, only: [:show, :edit, :update, :destroy]
   before_filter :landing_page
+  before_action :authenticate_user!
   # GET /sections
   # GET /sections.json
   def index
     @sections = Section.all
+    @user = current_user
   end
 
   # GET /sections/1
   # GET /sections/1.json
   def show
+    @sections = Section.all
   end
 
   # GET /sections/new

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'pages/example1'
+
+  resources :tests
+  resources :answers
+  resources :questions
+  resources :tests
   resources :sections
   devise_for :users
 

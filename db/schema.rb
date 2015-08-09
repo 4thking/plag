@@ -11,43 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805181809) do
+ActiveRecord::Schema.define(version: 20150809011719) do
 
-  create_table "rapidfire_answer_groups", force: :cascade do |t|
-    t.integer  "question_group_id"
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "test_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "answer_id"
     t.integer  "user_id"
-    t.string   "user_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rapidfire_answer_groups", ["question_group_id"], name: "index_rapidfire_answer_groups_on_question_group_id"
-  add_index "rapidfire_answer_groups", ["user_id", "user_type"], name: "index_rapidfire_answer_groups_on_user_id_and_user_type"
-
-  create_table "rapidfire_question_groups", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "rapidfire_questions", force: :cascade do |t|
-    t.integer  "question_group_id"
-    t.string   "type"
-    t.string   "question_text"
-    t.integer  "position"
-    t.text     "answer_options"
-    t.text     "validation_rules"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rapidfire_questions", ["question_group_id"], name: "index_rapidfire_questions_on_question_group_id"
+  add_index "responses", ["answer_id"], name: "index_responses_on_answer_id"
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id"
 
   create_table "sections", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "body"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

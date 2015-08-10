@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 	    authorize! :create, :test
 	  end
 
-	  @test = Test.find(15)
+	  @test = Test.find(1)
 
 	  @user = User.find(2)
 

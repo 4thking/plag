@@ -9,7 +9,7 @@
 
                 <% @sections.each do |section| %>
                 <li>
-                    <a href="#">Section <%= link_to "#{section.title}", section %> </a>
+                    <a href="#"><%= link_to "Section #{section.title}", section %> </a>
                 </li>
 
                 <% end %>

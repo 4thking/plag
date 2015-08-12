@@ -1,15 +1,6 @@
 class TakeTestsController < ApplicationController
   before_action :set_take_test, only: [:show, :edit, :update, :destroy]
 
-  # GET /take_tests
-  # GET /take_tests.json
-  def index
-  end
-
-  def new
-     @test = Test.find(15)
-
-  end
 
   #SPEC: 7.1.1.2: Adding Create action
   def create
@@ -20,8 +11,8 @@ class TakeTestsController < ApplicationController
     if current_user.save
       format.html { redirect_to @take_test, notice: 'Take test was successfully created.' }
     else
-        format.html { render :new }
-        format.json { render json: @take_test.errors, status: :unprocessable_entity }
+      flash.now[:error] = "There were problems with your survey submission."
+            render :edit
     end
   end
 
@@ -37,7 +28,7 @@ class TakeTestsController < ApplicationController
 
     @user = User.find(2)
 
-    @response = Response.all
+  
   end
 
 end

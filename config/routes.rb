@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
   get 'pages/example1'
+  get 'pages/example2'
 
   resources :tests
   resources :answers
   resources :questions
   resources :tests
   resources :sections
+  resources :take_tests
+
   devise_for :users
+
+  resources :test do
+  resources :response
+end
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

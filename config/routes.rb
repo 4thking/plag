@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :responses
   get 'pages/example1'
   get 'pages/example2'
 

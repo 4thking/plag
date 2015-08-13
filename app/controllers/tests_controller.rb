@@ -11,26 +11,27 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
-    def create
-      params[:response].each do |question, answer|
-        current_user.responses.create :answer_id => answer[:answer_id], :user_id => current_user.id
-    end
+  end
 
-      if current_user.save
+     # def create
+    #  params[:response].each do |question, answer|
+      #  current_user.responses.create :answer_id => answer[:answer_id], :user_id => current_user.id
+  #  end
+
+     # if current_user.save
         flash[:info] = "Your survey has been submitted successfully!"
 
-      else
-        flash.now[:error] = "There were problems with your survey submission."
-        render :edit
-      end
-    end
+    #  else
+     #   flash.now[:error] = "There were problems with your survey submission."
+     #   render :edit
+     # end
+   # end
 
-    @test = Test.find(15)
+    #@test = Test.find(15)
 
-    @user = User.find(2)
+   # @user = User.find(2)
 
-    @response = Response.all
-  end
+  #  @response = Response.all
 
   # GET /tests/new
   def new

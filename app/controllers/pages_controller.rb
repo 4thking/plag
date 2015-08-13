@@ -21,8 +21,9 @@ class PagesController < ApplicationController
 
 	  @test = Test.find(15)
 
-	  @user = User.find(2)
 
-	  @response = Response.all
   end
+
+
+  
 end
